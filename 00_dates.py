@@ -18,5 +18,3 @@ print_date(now)
 year_2025 = datetime(2025, 1, 1)
 
 print_date(year_2025)
-
-# FERNANDO FLORES
