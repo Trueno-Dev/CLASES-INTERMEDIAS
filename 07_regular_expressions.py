@@ -5,44 +5,41 @@ import re
 my_string = "Esta es la lección número 7: Lección llamada Expresiones Regulares"
 my_other_string = "Esta no es la lección número 6: Manejo de Ficheros"
 
+# Match
 match = re.match("Esta es la lección", my_string, re.I)
-print(match)
-start, end = match.span()
-print(my_string[start:end])
+if match:
+    print(match)
+    start, end = match.span()
+    print(my_string[start:end])
 
 match = re.match("Esta es la lección", my_other_string)
-# if not(match == None): # Otra forma de comprobar el None.
-# if match != None: # Otra forma de comprobar el None.
 if match is not None:
     print(match)
     start, end = match.span()
     print(my_other_string[start:end])
 
-# print(re.match("Expresiones Regulares", my_other_string))
-
-# search
-
+# Search
 search = re.search("Lección", my_string, re.I)
-print(search)
-start, end = search.span()
-print(my_string[start:end])
+if search:
+    print(search)
+    start, end = search.span()
+    print(my_string[start:end])
 
-# findall
-
+# Findall
 findall = re.findall("lección", my_string, re.I)
 print(findall)
 
-# split
+# Split
+split_result = re.split(":", my_string)
+print(split_result)
 
-print(re.split(":", my_string))
+# Sub
+sub_result = re.sub("[l|L]ección", "LECCIÓN", my_string)
+print(sub_result)
+sub_result = re.sub("Expresiones Regulares", "RegEx", my_string)
+print(sub_result)
 
-# sub
-
-print(re.sub("[l|L]ección", "LECCIÓN", my_string))
-print(re.sub("Expresiones Regulares", "RegEx", my_string))
-
-# Patters
-
+# Patterns
 pattern = r"[lL]ección"
 print(re.findall(pattern, my_string))
 
@@ -66,3 +63,13 @@ print(re.findall(pattern, my_string))
 pattern = r"[l].*"
 print(re.findall(pattern, my_string))
 
+email = "ferOfficial@gmail.com"
+pattern = r"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+
+print(re.match(pattern, email))
+print(re.search(pattern, email))
+print(re.findall(pattern, email))
+
+
+email = "ferOfficial@gmail.com.mx.es"
+print(re.findall(pattern, email))
